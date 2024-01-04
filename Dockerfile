@@ -6,8 +6,6 @@ COPY nginx.conf /etc/nginx/nginx.conf
 
 COPY container-create.sh container-start.sh start.sh /usr/local/bin
 
-EXPOSE 8080
-
 STOPSIGNAL SIGQUIT
 
 ENTRYPOINT [ "start.sh" ]
