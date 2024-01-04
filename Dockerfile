@@ -4,7 +4,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends --no-install-su
 
 COPY nginx.conf /etc/nginx/nginx.conf
 
-COPY container-create.sh container-start.sh start.sh /usr/local/bin
+COPY container-start.sh start.sh /usr/local/bin
 
 STOPSIGNAL SIGQUIT
 
