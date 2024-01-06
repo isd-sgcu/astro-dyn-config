@@ -1,15 +1,13 @@
 FROM node:20-bookworm-slim
 
-RUN apt-get update && apt-get install -y --no-install-recommends --no-install-suggests nginx
+RUN apt-get update && apt-get install -y --no-install-recommends --no-install-suggests nginx && mkdir -p /docker
 
 COPY nginx.conf /etc/nginx/nginx.conf
 
-COPY container-start.sh start.sh /usr/local/bin
-
-RUN chmod +x /usr/local/bin/container-start.sh /usr/local/bin/start.sh
+COPY container-start.sh start.sh /docker
 
 STOPSIGNAL SIGQUIT
 
-ENTRYPOINT [ "start.sh" ]
+ENTRYPOINT [ "bash", "/docker/start.sh" ]
 
 CMD [ "serve" ]
